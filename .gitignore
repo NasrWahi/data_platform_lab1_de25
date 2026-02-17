@@ -1,0 +1,17 @@
+.venv/
+env/
+venv/
+
+pycache/
+*.pyc
+
+data/raw/
+data/results/
+*.csv
+*.xlsx
+
+.vscode/
+.idea/
+
+.DS_Store
+EOF
