@@ -5,11 +5,6 @@ venv/
 pycache/
 *.pyc
 
-data/raw/
-data/results/
-*.csv
-*.xlsx
-
 .vscode/
 .idea/
 
