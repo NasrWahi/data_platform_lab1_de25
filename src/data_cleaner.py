@@ -1,3 +1,24 @@
+from pydantic import BaseModel, field_validator
+from typing import Optional
+
+class Product(BaseModel):
+    id: str
+    name: str
+    price: float
+    currency: Optional[str] = None
+
+    @field_validator("price")
+    @classmethod
+    def price_must_be_positive(cls, v):
+        if v <= 0:
+            raise ValueError("Negativt eller noll pris är omöjligt att hantera")
+        return v
+
+
+
+
+
+
 import pandas as pd
 
 def klassificera_rad(row: pd.Series) -> tuple[str, str]:
