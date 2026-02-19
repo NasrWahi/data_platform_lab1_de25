@@ -14,6 +14,40 @@ class Product(BaseModel):
             raise ValueError("Negativt eller noll pris är omöjligt att hantera")
         return v
 
+import pandas as pd
+import numpy as np
+
+def load_and_brand_data(file_path):
+    df = pd.read_csv(file_path, sep=';')
+
+    df = df.map(lambda x: x.strip() if isinstance(x, str) else x)
+
+    df["price_numeric"] = pd.to_numeric(df["price"], errors='coerce')
+
+    return df
+
+def separate_rejected_data(df):
+    rejected_condition = (
+        (df["id"].isna() | 
+        (df["id"] == "")) |
+        (df["price_numeric"] <= 0) 
+    )
+
+    df_rejected = df[rejected_condition].copy()
+    df_valid = df[~rejected_condition].copy()
+
+    return df_valid, df_rejected
+
+def apply_flags(df):
+    
+    df["flag_missing_currency"] = df["currency"].isna() 
+
+    df["flag_suspicious_price"] = df["price_numeric"] > 5000
+
+    df["flag_zero_price"] = df["price_numeric"] == 0
+
+    return df
+
 
 
 
