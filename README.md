@@ -54,7 +54,7 @@ source .venv/Scripts/activate
 
 ## Install dependencies:
 uv pip install -r requirements.txt
-pip install -r requirements.txt
+[or] pip install -r requirements.txt
 
 # 2. Execution
 Once the dependencies are installed, you can run the ETL pipeline with: python src/main.py
