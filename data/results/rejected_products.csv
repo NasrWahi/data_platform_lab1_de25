@@ -1,0 +1,9 @@
+id,name,price,currency,created_at,price_numeric,created_at_dt
+SKU-1002,pants,520,SEK,2024/02/15,520.0,
+SKU-1003,shirts,450,SEK,,450.0,
+,jacket,-200,SEK,2024-13-01,-200.0,
+SKU-1005,,,,,,
+,hat,free,SEK,,,
+SKU-1012,belt,300,SEK,2024/03/10,300.0,
+SKU-1014,t-shirt,0,SEK,2024-04-10,0.0,2024-04-10
+SKU-1015,hoodie,-50,SEK,2024-04-15,-50.0,2024-04-15

@@ -17,7 +17,7 @@ class Product(BaseModel):
 import pandas as pd
 import numpy as np
 
-def load_and_brand_data(file_path):
+def load_and_branch_data(file_path):
     df = pd.read_csv(file_path, sep=';')
 
     df = df.map(lambda x: x.strip() if isinstance(x, str) else x)
@@ -27,10 +27,15 @@ def load_and_brand_data(file_path):
     return df
 
 def separate_rejected_data(df):
+    # Konvertering av datum - Felaktiga datum = NaT
+    df['created_at_dt'] = pd.to_datetime(df['created_at'], errors='coerce')
+
+    # Avvisningskriterier:
     rejected_condition = (
         (df["id"].isna() | 
         (df["id"] == "")) |
-        (df["price_numeric"] <= 0) 
+        (df["price_numeric"] <= 0) |
+        (df["created_at_dt"].isna())
     )
 
     df_rejected = df[rejected_condition].copy()
@@ -47,40 +52,3 @@ def apply_flags(df):
     df["flag_zero_price"] = df["price_numeric"] == 0
 
     return df
-
-
-
-
-
-
-import pandas as pd
-
-def klassificera_rad(row: pd.Series) -> tuple[str, str]:
-    """
-    Detta ska klassificera en rad som 'godkänd', 'flagga' eller 'avvisad'.
-
-    Args:
-        row: En rad från DataFrame
-
-    Returns:
-        tuple[str, str]: (status, anledning)
-        - status: 'godkänd', 'flagga' eller 'avvisad'
-        - anledning: Beskrivning av problem (eller godkönd)
-    """
-
-anledningar = []
-
-# Hantera ID
-if pd.isna(row['id']) or str(row['id']).strip() == '':
-    return ('avvisad', 'Saknar ID')
-
-# Hantera pris
-price_val = row['price']
-if pd.isna(price_val):
-    anledningar.append('Saknar pris')
-else:
-    price_str = str(price_val).strip().lower()
-
-    #
-    if price_str in ['free', 'not available', '']:
-        return ('avvisad', f'Ogiltigt pris: {price_val}')
