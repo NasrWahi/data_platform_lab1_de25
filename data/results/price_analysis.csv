@@ -1,0 +1,11 @@
+id,name,price,currency,created_at,price_numeric,created_at_dt,flag_missing_currency,flag_suspicious_price,flag_zero_price
+SKU-1039,coat,999999,SEK,2024-10-15,999999.0,2024-10-15,False,True,False
+SKU-1021,ring,25000,SEK,2024-06-05,25000.0,2024-06-05,False,True,False
+SKU-1020,watch,15000,SEK,2024-06-01,15000.0,2024-06-01,False,True,False
+SKU-1032,suit,5000,SEK,2024-09-01,5000.0,2024-09-01,False,False,False
+SKU-1040,parka,4500,SEK,2024-11-01,4500.0,2024-11-01,False,False,False
+SKU-1027,winter jacket,3500,SEK,2024-07-15,3500.0,2024-07-15,False,False,False
+SKU-1016,coat,2500,SEK,2024-05-01,2500.0,2024-05-01,False,False,False
+SKU-1034,blazer,2200,SEK,2024-09-10,2200.0,2024-09-10,False,False,False
+SKU-1047,heels,1500,SEK,2024-12-15,1500.0,2024-12-15,False,False,False
+SKU-1010,boots,1500,SEK,2024-02-15,1500.0,2024-02-15,False,False,False

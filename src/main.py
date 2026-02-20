@@ -17,13 +17,20 @@ def main():
     df_final = apply_flags(df_valid)
 
     # Loading
+
+    # Analytics summary
     summary = {
         "snittpris": [df_final["price_numeric"].mean()],
         "medianpris": [df_final["price_numeric"].median()],
         "antal_produkter": [len(df_final)],
-        "antal_produkter_saknat_pris": [df_final["price_numeric"].isna().sum()]
+        "antal_produkter_saknat_pris": [df_final["price_numeric"].isna().sum()],
+        "antal_flaggade_misstänkta": [df_final["flag_suspicious_price"].sum()]
     }
     pd.DataFrame(summary).to_csv(f"{output_dir}/analytics_summary.csv", index=False)
+
+    # Price analysis
+    price_analysis = df_final.sort_values(by="price_numeric", ascending=False).head(10)
+    price_analysis.to_csv(f"{output_dir}/price_analysis.csv", index=False)
 
     # Rejected products
     df_rejected.to_csv(f"{output_dir}/rejected_products.csv", index=False)
