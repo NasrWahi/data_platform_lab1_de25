@@ -5,7 +5,7 @@
 # Overview
 This project implements a professional ETL (Extract, Transform, Load) pipeline using Python, Pandas, and Pydantic. Which is designed, so that we can be able to process raw product data, enforce certain strict data schemas, and also generate analytical reports. By utilizing Pydantic for data validation, the pipeline would ensure high data integrity before performing statistical analysis.
 
-# Objetives
+# Objectives
 - Identification and use of typical components in a data platform, specifically Pydantic for data contracts and Pandas for transformation.
 
 - Implementation of an ETL pipeline flow.
